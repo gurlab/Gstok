@@ -14,7 +14,7 @@ class MaterialController extends Controller
      */
     public function index()
     {
-        //
+        return view('materials.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class MaterialController extends Controller
      */
     public function create()
     {
-        //
+        return view('materials.create');
     }
 
     /**
@@ -46,7 +46,7 @@ class MaterialController extends Controller
      */
     public function show(Material $material)
     {
-        //
+        return view('materials.show');
     }
 
     /**
@@ -57,7 +57,7 @@ class MaterialController extends Controller
      */
     public function edit(Material $material)
     {
-        //
+        return view('materials.edit');
     }
 
     /**
