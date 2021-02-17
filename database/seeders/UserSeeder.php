@@ -26,6 +26,16 @@ class UserSeeder extends Seeder
             'updated_at'        =>  now()
         ]);
 
+        $user->insert([
+            'name'              =>  'gurlab',
+            'email'             =>  'a@a',
+            'email_verified_at' =>  now(),
+            'password'          =>  Hash::make('123'),
+            'remember_token'    =>  Str::random(10),
+            'created_at'        =>  now(),
+            'updated_at'        =>  now()
+        ]);
+
         $user->factory(15)->create();
     }
 }
