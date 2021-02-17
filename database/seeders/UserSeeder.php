@@ -21,7 +21,9 @@ class UserSeeder extends Seeder
             'email'             =>  'gokhan.php@gmail.com',
             'email_verified_at' =>  now(),
             'password'          =>  Hash::make('2248'),
-            'remember_token'    =>  Str::random(10)
+            'remember_token'    =>  Str::random(10),
+            'created_at'        =>  now(),
+            'updated_at'        =>  now()
         ]);
 
         $user->factory(15)->create();
