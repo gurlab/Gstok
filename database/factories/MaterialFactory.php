@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Material;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class MaterialFactory extends Factory
 {
@@ -13,6 +14,7 @@ class MaterialFactory extends Factory
      * @var string
      */
     protected $model = Material::class;
+    private $code;
 
     /**
      * Define the model's default state.
@@ -21,8 +23,11 @@ class MaterialFactory extends Factory
      */
     public function definition()
     {
+        $this->code = $this->faker->randomLetter . '0' . $this->faker->randomNumber(4);
+
         return [
-            //
+            'code'  =>  Str::upper($this->code),
+            'name'  =>  Str::upper($this->faker->word),
         ];
     }
 }

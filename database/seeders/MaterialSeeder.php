@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Material;
 use Illuminate\Database\Seeder;
 
 class MaterialSeeder extends Seeder
@@ -11,8 +12,8 @@ class MaterialSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Material $material)
     {
-        //
+        $material->factory('20')->create();
     }
 }
