@@ -16,6 +16,9 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+
+    <!-- SweetAlert2 -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 
 <body class="font-sans antialiased">
@@ -35,14 +38,20 @@
         <main>
             <div class="py-12">
                 <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+
+                    {{ $slot }}
+
                     @if ($message = Session::get('message'))
                     <x-alert type="green" message="{{ $message }}" />
                     @endif
-                    {{ $slot }}
+
+                    <x-delete-confirmation />
+
                 </div>
             </div>
         </main>
     </div>
 </body>
-
+<!-- SweetAlert2 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
 </html>

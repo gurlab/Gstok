@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-main-layout>
     <x-slot name="header">Malzeme Düzenle</x-slot>
 
     <div class="flex flex-row">
@@ -11,8 +11,8 @@
         <form class="my-auto" action="{{ route('materials.destroy',$material->id) }}" method="POST">
             @csrf
             @method('DELETE')
-            <button type="submit"
-                class="flex justify-center float-right w-full px-2 py-1 mb-4 text-sm text-gray-700 bg-red-400 border border-gray-400 shadow sm:w-20 hover:bg-red-300 sm:rounded-lg">
+            <button type="submit" data-name="#{{ $material->code }} : {{ $material->name }}"
+                class="flex justify-center float-right w-full px-2 py-1 mb-4 text-sm text-gray-700 bg-red-400 border border-gray-400 shadow delete-confirmation sm:w-20 hover:bg-red-300 sm:rounded-lg">
                 <x-heroicon-o-trash class="w-5 h-5 mr-1" />
                 Kaldır
             </button>
@@ -57,4 +57,4 @@
             </material> --}}
         </div>
     </div>
-</x-app-layout>
+</x-main-layout>

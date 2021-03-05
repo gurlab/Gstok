@@ -53,7 +53,8 @@
                         <form action="{{ route('materials.destroy',$material->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="float-right ml-3 text-red-600 hover:text-red-900">
+                            <button type="submit" data-name="#{{ $material->code }} : {{ $material->name }}"
+                                class="float-right ml-3 text-red-600 delete-confirmation hover:text-red-900">
                                 <x-heroicon-o-trash class="w-5 h-5" />
                             </button>
                         </form>
@@ -64,7 +65,6 @@
                     </td>
                 </tr>
                 @endforeach
-
             </tbody>
         </table>
     </div>
