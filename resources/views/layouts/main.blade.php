@@ -35,6 +35,9 @@
         <main>
             <div class="py-12">
                 <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+                    @if ($message = Session::get('message'))
+                    <x-alert type="green" message="{{ $message }}" />
+                    @endif
                     {{ $slot }}
                 </div>
             </div>

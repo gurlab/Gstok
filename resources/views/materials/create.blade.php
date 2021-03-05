@@ -36,7 +36,7 @@
             <div class="w-full py-1 mb-2 font-bold">
                 Son Eklenen Malzemeler
             </div>
-            <div class="divide-y divide-dashed">
+            <div class="divide-y divide-solid">
                 @forelse ($materials as $material)
                 <div class="flex py-1 text-sm">
                     <div class="flex flex-1 pr-2">{{ $material->code }}</div>

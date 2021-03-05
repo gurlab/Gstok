@@ -39,7 +39,7 @@ class MaterialController extends Controller
     public function store(Request $request)
     {
         Material::create($request->all());
-        return redirect()->route('materials.create');
+        return redirect()->route('materials.create')->with('message', 'Material created successfully.');
     }
 
     /**
@@ -75,7 +75,7 @@ class MaterialController extends Controller
     public function update(Request $request, Material $material)
     {
         $material->update($request->all());
-        return redirect()->route('materials.edit', $material->id);
+        return redirect()->route('materials.edit', $material->id)->with('message', 'Material updated successfully.');
     }
 
     /**
@@ -89,8 +89,8 @@ class MaterialController extends Controller
         $material->delete();
 
         if (Str::contains(session()->previousUrl(), '/edit'))
-            return redirect()->route('materials.index');
+            return redirect()->route('materials.index')->with('message', 'Material deleted succesfully.');
         else
-            return redirect()->back();
+            return redirect()->back()->with('message', 'Material deleted succesfully.');
     }
 }
