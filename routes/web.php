@@ -15,13 +15,13 @@ use App\Http\Controllers\MaterialController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('materials.index');
 });
 
 Route::get('/yetkili/anasayfa', function () {
     return view('admin.dashboard');
 })->middleware(['auth'])->name('admin.dashboard');
 
-Route::resource('malzemeler', MaterialController::class, ['names' => 'materials']);
+Route::resource('materials', MaterialController::class, ['names' => 'materials'])->middleware('auth');
 
 require __DIR__.'/auth.php';

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Material;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class MaterialController extends Controller
 {
@@ -14,7 +15,8 @@ class MaterialController extends Controller
      */
     public function index()
     {
-        return view('materials.index');
+        $materials = Material::latest()->paginate(5);
+        return view('materials.index', compact('materials'));
     }
 
     /**
@@ -24,7 +26,8 @@ class MaterialController extends Controller
      */
     public function create()
     {
-        return view('materials.create');
+        $materials = Material::latest()->limit(10)->get();
+        return view('materials.create', compact('materials'));
     }
 
     /**
@@ -35,7 +38,8 @@ class MaterialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Material::create($request->all());
+        return redirect()->route('materials.create');
     }
 
     /**
@@ -57,7 +61,8 @@ class MaterialController extends Controller
      */
     public function edit(Material $material)
     {
-        return view('materials.edit');
+        // $material = $material->findOrFail($id);
+        return view('materials.edit', compact('material'));
     }
 
     /**
@@ -69,7 +74,8 @@ class MaterialController extends Controller
      */
     public function update(Request $request, Material $material)
     {
-        //
+        $material->update($request->all());
+        return redirect()->route('materials.edit', $material->id);
     }
 
     /**
@@ -80,6 +86,11 @@ class MaterialController extends Controller
      */
     public function destroy(Material $material)
     {
-        //
+        $material->delete();
+
+        if (Str::contains(session()->previousUrl(), '/edit'))
+            return redirect()->route('materials.index');
+        else
+            return redirect()->back();
     }
 }
